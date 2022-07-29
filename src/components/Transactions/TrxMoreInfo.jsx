@@ -65,7 +65,7 @@ const TrxMoreInfo = ({
 
         <div className={classes["trx-item"]}>
           <h5>Amount: </h5>
-          <p>{amount ? formatAmountToBalance(amount):  "XXXX"}</p>
+          <p>{amount ? formatAmountToBalance(amount):  "XXXX"} HUC</p>
         </div>
 
         <div className={classes["trx-item"]}>

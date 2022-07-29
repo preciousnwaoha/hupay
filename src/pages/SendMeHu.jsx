@@ -25,7 +25,7 @@ const SendMeHu = ({ withAmount = false }) => {
 
   const beneficiaryName = params.name || "Anonymous";
 
-  const desc = linkToText(paramDesc) || "";
+  const desc = paramDesc ? linkToText(paramDesc) : "";
 
   const amount = params.amount;
 

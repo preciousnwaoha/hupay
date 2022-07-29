@@ -107,3 +107,14 @@
     margin: 1rem auto;
     font-weight: 700;
 }
+
+.metamask-logo {
+    margin: 1rem;
+    margin-top: 0;
+}
+
+.metamask-logo img {
+    object-fit: contain;
+    width: 80px;
+    height: 80px;
+}

@@ -34,8 +34,14 @@ export const formatBalanceToAmount = (balance) => {
     let afterDecimal;
 
     if (arr.length === 1) {
-        beforeDecimal = "0";
-        afterDecimal = arr[0];
+        if (!balance.includes(".")) {
+            beforeDecimal = arr[0]
+            afterDecimal = workingAmount
+        } else {
+            beforeDecimal = "0";
+            afterDecimal = arr[0]
+        }
+        
     }
 
     if (arr.length === 2) {
