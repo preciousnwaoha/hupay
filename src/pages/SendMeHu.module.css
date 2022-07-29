@@ -3,11 +3,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--dark-900);
 }
 
 
 .send-me-hu-main {
-    border: 1px solid rgb(221, 221, 221);
+    border: 1px solid var(--light-700);
     width: 90%;
     max-width: 540px;
     border-radius: 1rem;
