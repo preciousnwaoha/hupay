@@ -43,26 +43,11 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
 // transactions db actions
 app.use('/api/trx', require('./routes/transactionsRoute'));
 
-// // get all recorded transactions in the db
-// app.get("/api/trx/all-trx", (req, res) => {
-//     Transaction.find()
-//         .then((result) => {
-//             res.json(result)
-//         }).catch(err => {
-//             console.log(err)
-//         })
-// })
 
-// // get single transaction byt id
-// app.get("/api/trx/get-trx", (req, res) => {
-//     Transaction.findById('62de7add67c504298c40aaab')
-//         .then(result => {
-//             res.json(result);
-//         }).catch(err => {
-//             console.log(err);
-//         })
-// })
 
+app.get("/", (req, res) => {
+    res.send("This is the backend server of hupay")
+})
 
 
 
