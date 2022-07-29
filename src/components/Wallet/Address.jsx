@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { IoMdCopy, IoCheckmarkDoneCircleSharp} from "react-icons/io"
+import { IoMdCopy } from "react-icons/io"
+import { BsFileEarmarkCheckFill } from "react-icons/bs"
 import ContractContext from "../../context/contract-context";
 import { formatAddress, formatAmountToBalance } from "../../utils/walletUtils";
 import classes from "./Address.module.css";
@@ -36,7 +37,7 @@ const Address = () => {
           {pubAddress}
         </p>
         <div className={classes["pub-address-copy"]} onClick={copyHandler}>
-          {copied ? <IoCheckmarkDoneCircleSharp /> : <IoMdCopy />}
+          {copied ? <BsFileEarmarkCheckFill /> : <IoMdCopy />}
         </div>
       </div>
     </div>
