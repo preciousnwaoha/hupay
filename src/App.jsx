@@ -1,3 +1,4 @@
+import React, {Suspense} from "react"
 import {
   BrowserRouter as Router,
   Routes,
@@ -5,12 +6,20 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-import ErrorPage404 from "./pages/ErrorPage404";
-import Wallet from "./pages/Wallet";
-import Transactions from "./pages/Transactions";
-import SendMeHu from "./pages/SendMeHu";
-import About from "./pages/About";
+// import Home from "./pages/Home";
+// import ErrorPage404 from "./pages/ErrorPage404";
+// import Wallet from "./pages/Wallet";
+// import Transactions from "./pages/Transactions";
+// import SendMeHu from "./pages/SendMeHu";
+import Loading from "./components/UI/Loading";
+// import About from "./pages/About";
+
+const About = React.lazy(() => import('./pages/About'));
+const SendMeHu = React.lazy(() => import('./pages/SendMeHu'));
+const Wallet = React.lazy(() => import('./pages/Wallet'));
+const Transactions = React.lazy(() => import('./pages/Transactions'));
+const Home = React.lazy(() => import('./pages/Home'));
+const ErrorPage404 = React.lazy(() => import('./pages/ErrorPage404'));
 
 const App = () => {
 
@@ -31,7 +40,13 @@ const App = () => {
   // };
 
   return (
+    <Suspense fallback={<div className={"centered"}>
+      <Loading />
+    </div>}>
     <Router>
+      
+
+      
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />}>
@@ -53,6 +68,7 @@ const App = () => {
         <Route path="*" element={<ErrorPage404 />} />
       </Routes>
     </Router>
+    </Suspense>
   );
 };
 
