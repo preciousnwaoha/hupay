@@ -1,0 +1,189 @@
+.about {
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--dark-900);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-family: 'Ibarra Real Nova', serif;
+    color: var(--secondary-700);
+    display: inline-block;
+    
+}
+
+.subtitle {
+    margin-top: 0;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--dark-900);
+    max-width: 80%;
+    text-align: center;
+    display: inline-block;
+}
+
+.analogies {
+    width: calc(100% - 4rem);
+    display: flex;
+    margin: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.text {
+    width: calc(50% - 1rem);
+}
+
+.text h2 {
+    font-size: 2rem;
+    font-family: 'Ibarra Real Nova', serif;
+}
+
+.text p {
+    font-weight: 300;
+    font-size: 1.25;
+    line-height: 25px;
+}
+
+.text p span {
+    font-weight: 700;
+}
+
+.img {
+    width: calc(50% - 1rem);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.img img {
+    object-fit: contain;
+    width: 100%;
+}
+
+.how-to-use {
+    width: calc(100% - 4rem);
+    margin: 2rem;
+}
+
+.how-to-use h2 {
+    color: var(--primary-700);
+    font-family: 'Ibarra Real Nova', serif;
+    font-size: 2rem;
+}
+
+.how-to-use p {
+    font-weight: 300;
+    line-height: 25px;
+}
+
+.how-to-use p span {
+    color: var(--secondary-700);
+    font-weight: 700;
+}
+
+.creator {
+    width: calc(100% - 4rem);
+    margin: 2rem;
+    margin-bottom: 3rem;
+}
+
+.creator h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Ibarra Real Nova', serif;
+    color: var(--secondary-700);
+}
+
+.creator h4 {
+    text-align: center;
+    max-width: 80%;
+    margin: auto;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.creator .glad {
+    text-align: center;
+    max-width: 80%;
+    margin: auto;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--primary-700);
+}
+
+.donate {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.donate h3 {
+    font-family: 'Ibarra Real Nova', serif;
+    font-size: 1.85rem;
+}
+
+.address {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+address p {
+    font-weight: 300;
+    font-size: 0.75rem;
+}
+
+
+
+.address button {
+    background: var(--primary-700);
+    color: var(--light-900);
+    margin-left: 2rem;
+    font-family: 'Ibarra Real Nova';
+    transition: outline .3s;
+}
+
+.address button:hover {
+    outline: 1px solid var(--secondary-700);
+    outline-offset: 3px;
+}
+
+
+@media screen and (max-width: 759px) {
+    .analogies {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .text {
+        width: 100%;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .text p {
+        font-size: 0.85rem;
+    }
+
+    .img {
+        width: 100%;
+    }
+
+    .how-to-use p {
+        font-size: 0.85rem;
+    }
+
+
+    .address {
+        font-size: 0.75rem;
+    }
+}

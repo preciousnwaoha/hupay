@@ -1,0 +1,72 @@
+.theme-button {
+    border-radius: 1rem;
+    height: 18px;
+    width: 35px;
+    background: var(--light-400);
+    position: relative;
+    margin: 0;
+    margin-left: 2rem;
+    cursor: pointer;
+    transition: outline .3s;
+}
+
+@media screen and (max-width: 759px) {
+    .theme-button {
+        width: 30px;
+        height: 15px;
+        margin-left: 1rem;
+    }
+}
+
+
+.theme-button:hover {
+    outline: 1px solid var(--secondary-400);
+    outline-offset: 3px;
+}
+
+.theme-button div {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: auto;
+    background: var(--dark-700);
+    height: 20px;
+    width: 20px;
+}
+
+.light div {
+    
+    animation: turnOn .3s ease-in forwards;
+}
+
+.dark div{
+    /* background: var(--dark-400); */
+    animation: turnOf .3s ease-in forwards;
+}
+
+
+@keyframes turnOn {
+    0% {
+        left: 0;
+        right: auto;
+    }
+
+    100% {
+        left: auto;
+        right: 0;
+    }
+}
+
+@keyframes turnOf {
+    0% {
+        left: auto;
+        right: 0;
+    }
+
+    100% {
+        left: 0;
+        right: auto;
+    }
+}

@@ -1,0 +1,49 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    color: var(--dark-900);
+}
+
+.copyright {
+    font-size: 10px;
+    color: var(--black-700);
+    font-weight: 300;
+}
+
+.copyright a:hover {
+    color: var(--primary-700);
+}
+
+.contact {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.5rem;
+}
+
+@media screen and (max-width: 759px) {
+    .copyright {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 1rem 1rem;
+    }
+
+    
+}
+
+
+@media screen and (min-width: 760px) {
+    .contact {
+        right: 2rem;
+    }
+
+    
+}

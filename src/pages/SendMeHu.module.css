@@ -1,0 +1,117 @@
+.send-me-hu {
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.send-me-hu-main {
+    border: 1px solid rgb(221, 221, 221);
+    width: 90%;
+    max-width: 540px;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (min-width:760px) {
+    .send-me-hu-main {
+        max-width: 640px;
+    }
+}
+
+
+@media screen and (min-width:900px) {
+    .send-me-hu-main {
+        max-width: 800px;
+    }
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Ibarra Real Nova';
+    color: var(--secondary-700);
+}
+
+.desc {
+    text-align: center;
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--dark-900);
+    margin-top: 0;
+}
+
+.pub-address {
+    display: flex;
+    margin: 0.5rem;
+    margin-top: 0;
+    font-weight: 300;
+}
+
+.pub-address-text {
+    font-size: 0.8rem;
+    color: var(--black-400);
+    margin: 0;
+}
+
+.pub-address-copy {
+    width: 0.85rem;
+    height: 0.85rem;
+    text-align: center;
+    color: var(--black-400);
+    line-height: 0.85rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+}
+
+.pub-address-copy:hover  {
+    color: var(--secondary-700);
+}
+
+
+.amount {
+    font-weight: 700;
+    margin: 1rem auto;
+}
+
+
+
+.alright {
+    background: var(--primary-700);
+    color: var(--light-900);
+    font-weight: 600;
+    align-self: center;
+    margin: 2rem 0;
+    font-family: 'Ibarra Real Nova';
+    cursor: pointer;
+    transition: outline .3s;
+}
+
+.alright:hover {
+    outline-offset: 3px;
+    outline: 1px solid var(--secondary-700);
+}
+
+.exit-modal {
+    color: #ffffff;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 20px;
+    text-align: 20px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.exit-modal:hover {
+    color: var(--secondary-400);
+}

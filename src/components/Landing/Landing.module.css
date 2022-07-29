@@ -1,0 +1,98 @@
+.landing {
+    min-height: 100vh;
+    padding: 1rem;
+    padding-top: 5rem;
+    /* background: var(--secondary-700); */
+}
+
+
+
+.left {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.right {
+    height: 200px;
+    margin: 3rem auto;
+    margin-bottom: 4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.left h1 {
+    font-family: 'Ibarra Real Nova';
+    font-size: 3rem;
+    color: var(--secondary-700);
+}
+
+.left p {
+    font-size: 1rem;
+    word-break: break-all;
+    font-weight: 300;
+    color: var(--dark-900);
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+
+.left button {
+    background: var(--primary-700);
+    color: var(--light-900);
+    font-family: 'Ibarra Real Nova';
+    font-size: 1.25rem;
+    transition: outline .3s;
+}
+
+.left button:hover {
+    outline: 1px solid var(--secondary-700);
+    outline-offset: 3px;
+}
+
+@media screen and (min-width: 760px) {
+    .landing {
+        height: 100vh;
+        padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    .right {
+    margin: auto;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left {
+        width: 45%;
+        margin-bottom: 15vh;
+        margin-left: 2rem;
+    }
+
+    .left p {
+        font-size: 1.25rem;
+        font-weight: 300;
+        color: var(--dark-900);
+        line-height: 30px;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .left h1 {
+        font-size: 3.5rem;
+    }
+}
+
+

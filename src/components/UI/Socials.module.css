@@ -1,0 +1,18 @@
+
+.socials div {
+    display: inline-block;
+    margin-left: 1rem;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: var(--primary-700);
+    font-size: 25px;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.socials div:hover {
+    color: var(--secondary-700);
+}
+

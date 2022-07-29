@@ -1,0 +1,64 @@
+.address {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--black-900);
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-900);
+    outline: 2px solid var(--primary-700);
+    outline-offset: 10px;
+    margin: 1rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.logo img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    width: 60px;
+    height: 60px;
+}
+
+.balance {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem;
+    color: var(--black-900);
+}
+
+.pub-address {
+    display: flex;
+    margin: 0.5rem;
+    margin-top: 0;
+    font-weight: 300;
+}
+
+.pub-address-text {
+    font-size: 0.8rem;
+    color: var(--black-400);
+    margin: 0;
+}
+
+.pub-address-copy {
+    width: 0.85rem;
+    height: 0.85rem;
+    text-align: center;
+    color: var(--black-400);
+    line-height: 0.85rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+}
+
+.pub-address-copy:hover  {
+    color: var(--secondary-700);
+}

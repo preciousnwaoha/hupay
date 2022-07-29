@@ -35,12 +35,19 @@ const transactionSchema = new Schema(
       type: String,
       required: true,
     },
+    senderName: {
+      type: String,
+      required: true,
+    },
     transactionHash: {
       type: String,
       required: true,
     },
-  },
-  { timestamps: true }
+    timeStamp: {
+      type: String,
+      required: true,
+    }
+  }
 );
 
 const Transaction = mongoose.model("Transaction", transactionSchema);

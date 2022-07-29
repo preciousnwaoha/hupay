@@ -1,0 +1,125 @@
+
+
+.title {
+    color: var(--primary-700);
+    font-family: 'Ibarra Real Nova';
+    font-size: 2rem;
+}
+
+.balance {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--dark-900);
+}
+
+.balance p {
+    margin: 0;
+
+}
+.balance-reload {
+    margin: 0;
+    margin-left: 1rem;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    transform: translateY(2px);
+}
+
+.balance-reload:hover {
+    color: var(--secondary-700);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    90% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+.send-me-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.send-me-form label {
+    display: block;
+    /* width: 100%; */
+    color: var(--dark-400);
+    
+    align-self: flex-start;
+}
+
+.send-me-form input {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--light-400);
+    padding: 0.75rem 0;
+    color: var(--dark-900);
+    margin-bottom: 1rem;
+}
+
+.send-me-form .filled-input {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--light-400);
+    padding: 0.75rem 0;
+    color: var(--dark-900);
+    margin-bottom: 1rem;
+}
+
+.send-me-form input:focus {
+    border-bottom: 1px solid var(--primary-700);
+}
+
+
+.send-me-form textarea {
+    display: block;
+    width: 100%;
+    margin-top: 0.75rem;
+    border: 1px solid var(--light-400);
+    border-radius: 1.5rem;
+    padding: 1rem;
+}
+
+.send-me-form textarea:focus {
+    outline: none;
+    border: 2px solid var(--primary-700);
+}
+
+.send-me-form button {
+    background-color: var(--secondary-700);
+    color: var(--dark-900);
+    font-weight: 700;
+    font-family: 'Ibarra Real Nova';
+    margin: 1rem auto;
+    transition: outline .3s;
+}
+
+.send-me-form button:hover {
+    background-color: var(--primary-700);
+    color: var(--light-900);
+    outline: 1px solid var(--secondary-700);
+    outline-offset: 3px;
+}
+
+.error {
+    font-size: 0.65rem;
+    color: red;
+}

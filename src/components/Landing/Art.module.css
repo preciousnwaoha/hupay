@@ -1,0 +1,55 @@
+.art {
+    position: relative;
+    width: 100%;
+    z-index: -1;
+}
+
+.one, .two, .three {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.one {
+    width: 200px;
+    height: 200px;
+    border-radius: 80px;
+    border: 10px solid var(--secondary-700);
+    animation: rotate 5s ease infinite;
+}
+
+.two {
+    width: 120px;
+    height: 120px;
+    border-radius: 50px;
+    border: 10px solid var(--primary-700);
+    animation: rotatePar 5s ease infinite;
+}
+
+.three {
+    width: 70px;
+    height: 70px;
+    border: 8px solid var(--secondary-700);
+    border-radius: 50%;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    0% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotatePar {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    0% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}

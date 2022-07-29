@@ -1,0 +1,62 @@
+.trx {
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-900);
+}
+
+.trx-main {
+    border: 1px solid var(--light-700);
+    width: 90%;
+    max-width: 540px;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Ibarra Real Nova';
+    color: var(--secondary-700);
+}
+
+.activity-title {
+    border-bottom: 3px solid var(--primary-700);
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0.5rem 1rem;
+}
+
+.exit-modal {
+    color: #ffffff;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 20px;
+    text-align: 20px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.exit-modal:hover {
+    color: var(--secondary-400);
+}
+
+@media screen and (min-width:760px) {
+    .trx-main {
+        max-width: 640px;
+    }
+}
+
+
+@media screen and (min-width:900px) {
+    .trx-main {
+        max-width: 800px;
+    }
+}

@@ -1,0 +1,122 @@
+
+
+.title {
+    color: var(--primary-700);
+    font-family: 'Ibarra Real Nova';
+    font-size: 2rem;
+}
+
+.option{
+    width: 100%;
+}
+
+.option h4 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--secondary-700);
+}
+
+.option form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option form label {
+    display: block;
+    /* width: 100%; */
+    color: var(--dark-400);
+    
+    align-self: flex-start;
+}
+
+.option form input {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--light-400);
+    padding: 0.75rem 0;
+    color: var(--dark-900);
+    margin-bottom: 1rem;
+}
+
+.option form input:focus {
+    border-bottom: 1px solid var(--primary-700);
+}
+
+/* .option button {
+    width: 0.85rem;
+    height: 0.85rem;
+    text-align: center;
+    line-height: 0.85rem;
+    margin: 0 0.25rem;
+} */
+
+.option button {
+    margin: 1rem auto;
+    background-color: var(--secondary-700);
+    color: var(--dark-900);
+    font-family: 'Ibarra Real Nova';
+    font-weight: 700;
+    transition: outline .3s;
+}
+
+.option button:hover {
+    outline: 1px solid var(--dark-900);
+    outline-offset: 3px;
+}
+
+.thanks {
+    color: var(--primary-700);
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+.copy-address {
+    display: flex;
+    width: 100%;
+    font-weight: 300;
+    color: var(--dark-900);
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    
+}
+
+.copy-address button {
+    margin: 1rem auto;
+    font-family: 'Ibarra Real Nova';
+    align-self: center;
+}
+
+.option .coping {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.option .coping p {
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--dark-900);
+}
+
+.option .coping button {
+    background: var(--primary-700);
+    color: var(--light-900);
+    font-family: 'Ibarra Real Nova';
+    transition: outline .3s;
+}
+
+.option .coping button:hover {
+    outline: 1px solid var(--secondary-700);
+    outline-offset: 3px;
+}
+
+.error {
+    font-size: 0.65rem;
+    color: red;
+}

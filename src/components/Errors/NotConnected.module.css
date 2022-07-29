@@ -1,0 +1,51 @@
+.not-connected {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.not-connected h1 {
+    font-family: 'Ibarra Real Nova';
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--secondary-700)
+}
+
+.not-connected .metamask {
+    margin: 1rem;
+}
+
+.not-connected .metamask img{
+    object-fit: contain;
+    width: 80px;
+    height: 80px;
+}
+
+.steps {
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+}
+
+.steps h2 {
+    font-family: 'Ibarra Real Nova';
+}
+
+.steps p {
+    font-weight: 300;
+    font-size: 0.85rem;
+    line-height: 22px;
+    margin-bottom: 1rem;
+}
+
+.steps p span {
+    font-weight: 700;
+}
+
+.note {
+    width: 100%;
+    font-style: italic;
+    margin: 1rem 0;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--secondary-700);
+}

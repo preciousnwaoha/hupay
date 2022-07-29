@@ -1,0 +1,26 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.75);
+}
+
+.modal {
+    position: fixed;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    /* border: 1px solid red; */
+    z-index: 10;
+}
+
+@media screen and (max-width: 759px) {
+     .modal {
+        width: calc(100% - 2rem);
+        margin: 1rem 0;
+     }
+}
+

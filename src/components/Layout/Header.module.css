@@ -1,0 +1,41 @@
+.header {
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+
+.logo {
+    color: var(--primary-700);
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    object-fit: contain;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.logo p {
+    display: inline-block;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+
+@media screen and (min-width: 760px) {
+    .header {
+        padding: 1rem 2rem;
+    }
+}

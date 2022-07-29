@@ -1,0 +1,25 @@
+.nav-item {
+    display: inline-block;
+    margin: 0 1.5rem;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--dark-900);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 759px) {
+    .nav-item {
+        font-size: 0.85rem;
+        margin: 0 0.5rem;
+    }
+}
+
+
+.nav-item:hover {
+    color: var(--primary-700);
+}
+
+.nav-item .active-nav {
+    color: var(--secondary-700);
+    /* border-bottom: 1px solid var(--primary-700); */
+}

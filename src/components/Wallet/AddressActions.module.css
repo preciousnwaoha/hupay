@@ -1,0 +1,21 @@
+.address-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.address-actions button {
+    font-family: 'Ibarra Real Nova';
+    margin: 1rem;
+    background: var(--primary-700);
+    color: var(--light-900);
+    transition: outline .3s;
+}
+
+.address-actions button:hover {
+    outline-offset: 3px;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: var(--secondary-700);
+}
+

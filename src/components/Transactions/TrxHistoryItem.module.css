@@ -1,0 +1,89 @@
+.trx-history-item {
+    border-bottom: 1px solid var(--light-700);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+
+.trx-history-item:hover .name {
+    color: var(--secondary-700);
+}
+
+.trx-history-item:last-child {
+    border-bottom: 1px solid var(--light-700);
+} 
+
+
+.hu-info {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    border: 1px solid var(--primary-700);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: var(--primary-700);
+    margin-right: 1rem;
+    border-radius: 50%;
+}
+
+.hu-info-text {
+    display: inline-block;
+}
+
+.name {
+    font-size: 1.125rem;
+    font-family: 'Ibarra Real Nova';
+    font-weight: 500;
+    color: var(--black-900);
+    margin-bottom: 0.5rem;
+}
+
+.desc {
+    font-size: 0.75rem;
+    color: var(--black-700);
+    font-weight: 300;
+}
+
+.chain-info {
+    color: var(--black-900);
+    text-align: right;
+}
+
+.amount {
+    font-size: 1.25rem;
+    color: var(--black-900);
+    margin-bottom: 0.5rem;
+}
+
+.to-from {
+    font-size: 0.75rem;
+    color: var(--black-700);
+    font-weight: 300;
+}
+
+
+.exit-modal {
+    color: #ffffff;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 20px;
+    text-align: 20px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.exit-modal:hover {
+    color: var(--secondary-400);
+}
