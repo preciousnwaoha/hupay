@@ -31,7 +31,7 @@ const MintHu = ({onExitModal}) => {
     valueChangeHandler: amountChangeHandler,
     inputBlurHandler: amountBlurHandler,
     reset: amountResetHandler,
-  } = useInput((value) => ((value.trim() !== "") && (Number(value) <= formatAmountToBalance(balance)) && (Number(value) > 0) ));
+  } = useInput((value) => value > 0);
 
   const {
     value: enteredSenderName,
