@@ -99,7 +99,7 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
         };
 
         console.log("Sending To DB");
-        await fetch("/api/trx/add-trx", {
+        await fetch("https://hupay-backend.herokuapp.com/api/trx/add-trx", {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(receiptToRecord),

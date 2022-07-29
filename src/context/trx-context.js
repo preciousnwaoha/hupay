@@ -41,7 +41,7 @@ export const TransactionContextProvider = ({ children }) => {
       console.log(formattedTransactionsFromBlockchain);
 
       // get db transactions
-      const transactionsFromDB = await fetch("/api/trx/my-trx", {
+      const transactionsFromDB = await fetch("https://hupay-backend.herokuapp.com/api/trx/my-trx", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userAddress: userAddress }),
