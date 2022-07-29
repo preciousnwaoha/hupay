@@ -1,5 +1,5 @@
 .header {
-    background: transparent;
+    background: var(--light-900);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,6 +9,7 @@
     left: 0;
     width: 100%;
     z-index: 5;
+
 }
 
 
@@ -25,12 +26,26 @@
     float: left;
 }
 
+
+
 .logo p {
     display: inline-block;
     height: 40px;
     display: flex;
     align-items: center;
     margin: 0;
+}
+
+@media screen and (max-width: 759px) {
+    .logo img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo p {
+        height: 30px;
+        font-size: 0.85rem;
+    }
 }
 
 

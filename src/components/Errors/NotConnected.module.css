@@ -8,7 +8,7 @@
     font-family: 'Ibarra Real Nova';
     text-align: center;
     font-size: 2.5rem;
-    color: var(--secondary-700)
+    color: var(--secondary-700);
 }
 
 .not-connected .metamask {
@@ -47,5 +47,6 @@
     margin: 1rem 0;
     margin-bottom: 2rem;
     padding: 1rem;
+    color: #1e2124;
     background-color: var(--secondary-700);
 }

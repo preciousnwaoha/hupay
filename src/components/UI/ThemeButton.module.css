@@ -12,9 +12,9 @@
 
 @media screen and (max-width: 759px) {
     .theme-button {
-        width: 30px;
-        height: 15px;
-        margin-left: 1rem;
+        width: 25px;
+        height: 12px;
+        margin-left: 0.5rem;
     }
 }
 

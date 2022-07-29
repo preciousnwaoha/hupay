@@ -95,7 +95,7 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
           message: enteredDesc || `Sent cash to ${beneficiaryName}`,
           amount: formatBalanceToAmount(amount),
           senderName: enteredSenderName || "Anonymous",
-          timeStamp: `${(+ Date.now())}`,
+          timeStamp: `${(+ Date.now()) / 1000}`,
         };
 
         console.log("Sending To DB");

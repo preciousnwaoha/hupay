@@ -35,15 +35,27 @@ export const mergeTransactionsChainAndDB = (chainTrx, dbTrx) => {
 };
 
 
-export const timeConverter = (UNIX_timestamp) => {
-  var a = new Date(UNIX_timestamp * 1000);
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-  return time;
+// export const timeConverter = (UNIX_timestamp) => {
+//   var a = new Date(UNIX_timestamp * 1000);
+//   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+//   var year = a.getFullYear();
+//   var month = months[a.getMonth()];
+//   var date = a.getDate();
+//   var hour = a.getHours();
+//   var min = a.getMinutes();
+//   var sec = a.getSeconds();
+//   var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+//   return time;
+// }
+
+export const timeConverter = (timestamp) => {
+const date = new Date(timestamp * 1000);
+
+ const time = "Date: "+date.getDate()+
+          "/"+(date.getMonth()+1)+
+          "/"+date.getFullYear()+
+          " "+date.getHours()+
+          ":"+date.getMinutes()+
+          ":"+date.getSeconds();
+          return time;
 }

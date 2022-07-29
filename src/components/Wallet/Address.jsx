@@ -1,15 +1,28 @@
-import React, { useContext } from "react";
-import { IoMdCopy} from "react-icons/io"
+import React, { useContext, useState } from "react";
+import { IoMdCopy, IoCheckmarkDoneCircleSharp} from "react-icons/io"
 import ContractContext from "../../context/contract-context";
 import { formatAddress, formatAmountToBalance } from "../../utils/walletUtils";
 import classes from "./Address.module.css";
 
 const Address = () => {
+  const [copied, setCopied] = useState(false);
   const contractCtx = useContext(ContractContext)
 
 
   const pubAddress = formatAddress(contractCtx.userAddress)
   const balance = contractCtx.balance
+
+  const copyHandler = () => {
+
+      navigator.clipboard.writeText(pubAddress);
+
+
+        setCopied(true)
+
+        setTimeout(() => {
+                  setCopied(false)
+        }, 3000);
+    }
 
   return (
     <div className={classes.address}>
@@ -22,8 +35,8 @@ const Address = () => {
         <p className={classes["pub-address-text"]}>
           {pubAddress}
         </p>
-        <div className={classes["pub-address-copy"]}>
-          <IoMdCopy />
+        <div className={classes["pub-address-copy"]} onClick={copyHandler}>
+          {copied ? <IoCheckmarkDoneCircleSharp /> : <IoMdCopy />}
         </div>
       </div>
     </div>

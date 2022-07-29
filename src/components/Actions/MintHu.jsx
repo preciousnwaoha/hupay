@@ -98,7 +98,7 @@ const MintHu = ({onExitModal}) => {
           message: enteredDesc || "",
           amount: formatBalanceToAmount(enteredAmount),
           senderName: enteredSenderName || "Anonymous",
-          timeStamp: `${(+ Date.now())}`,
+          timeStamp: `${(+ Date.now()) / 1000}`,
         };
 
         console.log("Sending To DB");
