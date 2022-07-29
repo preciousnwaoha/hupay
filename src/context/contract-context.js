@@ -15,9 +15,15 @@ export const ContractContextProvider = ({ children }) => {
   const [connected, setConnected] = useState(false);
   const [balance, setBalance] = useState("");
 
+
+  /**
+   * useEffect/setup - Setup the contract and get user Address using the handler()
+   * provided by the bunzz sdk
+   * thus runs once
+   */
   useEffect(() => {
     const setup = async () => {
-        console.log("ran setup");
+        // console.log("ran setup");
       try {
         const handler = await init();
 
@@ -35,12 +41,15 @@ export const ContractContextProvider = ({ children }) => {
     setup();
   }, []);
 
+  // check if contract is still connected once it changes state
   useEffect(() => {
     if (contract) {
       setConnected(true)
     }
   }, [contract])
 
+
+  // get Contract Balance
   const getBalance = async () => {
     if (!!userAddress && !!contract && !balance) {
       const bo = await contract
@@ -57,9 +66,12 @@ export const ContractContextProvider = ({ children }) => {
     }
   };
 
+  /**
+   * useEffect/getBalanceFirst - Get Balance anytime the contract state changes
+   */
   useEffect(() => {
     const getBalanceFirst = async () => {
-      console.log("getting balance");
+      // console.log("getting balance");
       const bo = await contract
         .balanceOf(userAddress)
         .then((res) => {

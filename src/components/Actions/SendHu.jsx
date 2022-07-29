@@ -33,6 +33,7 @@ const SendHu = ({onExitModal}) => {
     onExitModal("")
   }
 
+  // Collect form inputs and trace errors
   const {
     value: enteredAddress,
     isValid: addressIsValid,
@@ -71,14 +72,12 @@ const SendHu = ({onExitModal}) => {
 
 
 
-
-
-
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    console.log("submitting");
+    // console.log("submitting");
 
+    // check for errors in input and don't allow mint action if any
     if (
       !addressIsValid ||
       !amountIsValid ||
@@ -94,17 +93,16 @@ const SendHu = ({onExitModal}) => {
       );
       return;
     }
-
+    // waiting for confimation
     setWaitingForMetamaskConfirmation(true);
 
-    
-
-    
+    // console.log("Send started: confim Metamask");
+    // call mint method provided by bunzz sdk
     await contract
       .transfer(enteredAddress, formatBalanceToAmount(enteredAmount))
       .then(async (tx) => {
-        console.log("data: ", tx);
-
+        // console.log("data: ", tx);
+        // Transaction is now Pending and no more waiting for confirmation
         setSending(true)
         setWaitingForMetamaskConfirmation(false)
         console.log("Transfer Pending");
@@ -112,8 +110,9 @@ const SendHu = ({onExitModal}) => {
           .wait()
           .then(async (receipt) => {
 
-            console.log("Transaction Success");
+            // console.log("Transaction Success");
 
+            // Create Schema with Data for Hupay Database
             const receiptToRecord = {
               blockNumber: receipt.blockNumber,
               blockHash: receipt.blockHash,
@@ -128,7 +127,8 @@ const SendHu = ({onExitModal}) => {
               timeStamp: `${(+ Date.now()) / 1000}`,
             };
             
-            console.log("Sending To DB");
+            // Send Data to DB
+            // console.log("Sending To DB");
             await fetch("https://hupay-backend.herokuapp.com/api/trx/add-trx", {
               method: "post",
               headers: { "Content-Type": "application/json" },
@@ -136,12 +136,13 @@ const SendHu = ({onExitModal}) => {
             })
               .then((res) => {
                 if (res.ok) {
-                  console.log("receipt added to DB");
+                  // console.log("receipt added to DB");
                   return res.json();
                 }
               })
               .then((jsonResponse) => {
-                console.log("Adding Trx");
+                // console.log(jsonResponse);
+            // Update Transactions
                 trxCtx.addTransaction(receiptToRecord);
                 return jsonResponse;
 
@@ -161,6 +162,7 @@ const SendHu = ({onExitModal}) => {
         console.log(err);
       });
 
+      // update balance
     await contractCtx.getBalance()
       .then(res => {
         console.log("getting balance: ", res)
@@ -171,10 +173,13 @@ const SendHu = ({onExitModal}) => {
 
     setSending(false);
 
+    // Clear form
     addressResetHandler();
     amountResetHandler();
     senderNameResetHandler();
     descResetHandler();
+
+    // exit Modal
     exitModalHandler();
   };
   

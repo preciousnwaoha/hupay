@@ -7,6 +7,11 @@ import classes from "./GetHu.module.css";
 
 const symbols = /[+!?*^%$#&()@~]/
 
+/**
+ * GetHu - Main purpose is to create Links for user to share and recieve HUC
+ * There are no api call here, just pure React.js
+ */
+
 const GetHu = () => {
 
   const [copied, setCopied] = useState(false);
@@ -21,6 +26,7 @@ const GetHu = () => {
   const userAddress = contractCtx.userAddress;
 
 
+  // Collect form inputs and trace errors
   const {
     value: enteredName,
     isValid: nameIsValid,
@@ -67,6 +73,10 @@ const GetHu = () => {
     reset: descFixedResetHandler,
   } = useInput((value) => true);
 
+
+  /**
+   * copyHanler* - Copies link texts to clipboard
+   */
   const copyHandler = (type) => {
 
     if (type === "copy") {

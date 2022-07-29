@@ -15,9 +15,16 @@ export const TransactionContextProvider = ({ children }) => {
 
   const userAddress = contractCtx.userAddress;
 
+
+  /**
+   * useEffect/getTransactions - Update Transactions anytime the user logs in or out
+   *  */ 
   useEffect(() => {
     const getTransactions = async () => {
-      console.log("gettingData");
+      // console.log("gettingData");
+      /**
+       * responseFromBlockchain - Gets Transactions on HUC from the direct Blockchain with etherscan
+       */
       const responseFromBlockchain = await fetch(
         `https://api-goerli.etherscan.io/api?module=account&action=txlist&address=${process.env.REACT_APP_MAIN_TOKEN}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.REACT_APP_ETHERSCAN_KEY}`
       )
@@ -29,7 +36,8 @@ export const TransactionContextProvider = ({ children }) => {
         })
         .catch((err) => console.log(err));
 
-        console.log("responseFromBlockchain",  responseFromBlockchain);
+        // gotten all HUC Transactions
+        // console.log("responseFromBlockchain",  responseFromBlockchain);
 
         const transactionsFromBlockchain = [...responseFromBlockchain.result];
 
@@ -38,7 +46,7 @@ export const TransactionContextProvider = ({ children }) => {
         transactionsFromBlockchain
       );
 
-      console.log(formattedTransactionsFromBlockchain);
+      // console.log(formattedTransactionsFromBlockchain);
 
       // get db transactions
       const transactionsFromDB = await fetch("https://hupay-backend.herokuapp.com/api/trx/my-trx", {
@@ -58,7 +66,7 @@ export const TransactionContextProvider = ({ children }) => {
         // if blockchain getting was successfull then merge with db
         // else just use db only
       if (responseFromBlockchain.status === "1") {
-        console.log("merging db and chain")
+        // console.log("merging db and chain")
         const mergedTransactions = mergeTransactionsChainAndDB(formattedTransactionsFromBlockchain, transactionsFromDB)
 
         
@@ -66,7 +74,7 @@ export const TransactionContextProvider = ({ children }) => {
         setTransactions(mergedTransactions);
         setIsFromChain(true);
       } else {
-        console.log("decided to use just db")
+        // console.log("decided to use just db")
         setTransactions(transactionsFromDB);
         setIsFromChain(false);
       }
@@ -79,13 +87,14 @@ export const TransactionContextProvider = ({ children }) => {
 
   }, [userAddress]);
 
+  // Add new Transaction to View
   const addTransaction = (trx) => {
     const newTransactions = [...transactions, trx];
 
     setTransactions(newTransactions)
   }
 
-  console.log(transactions, isFromChain);
+  // console.log(transactions, isFromChain);
 
 
 

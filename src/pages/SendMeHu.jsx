@@ -1,89 +1,108 @@
-import React, {useState } from 'react'
-import { useParams, useSearchParams } from "react-router-dom"
-import { IoMdCopy} from "react-icons/io"
-import Footer from '../components/Layout/Footer';
-import Header from '../components/Layout/Header';
-import SendMe from '../components/Actions/SendMe';
-import Modal from '../components/UI/Modal';
-import classes from "./SendMeHu.module.css"
-import { formatAddress, formatAmountToBalance, linkToText } from '../utils/walletUtils';
+import React, { useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+import { IoMdCopy } from "react-icons/io";
+import Footer from "../components/Layout/Footer";
+import Header from "../components/Layout/Header";
+import SendMe from "../components/Actions/SendMe";
+import Modal from "../components/UI/Modal";
+import classes from "./SendMeHu.module.css";
+import {
+  formatAddress,
+  formatAmountToBalance,
+  linkToText,
+} from "../utils/walletUtils";
+import Error404 from "../components/Errors/Error404";
 
-const SendMeHu = ({withAmount = false}) => {
-    const params = useParams();
-    const [searchParams, setSearchParams] = useSearchParams();
+const SendMeHu = ({ withAmount = false }) => {
+  const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-    const [action, setAction] = useState("");
+  const [action, setAction] = useState("");
 
-    const paramDesc = searchParams.get('desc')
+  const paramDesc = searchParams.get("desc");
 
-  
+  const beneficiaryAddress = params.shareId;
 
-    const beneficiaryAddress = params.shareId;
+  const beneficiaryName = params.name || "Anonymous";
 
-    const beneficiaryName = params.name || "Anonymous";
+  const desc = linkToText(paramDesc) || "";
 
-    const desc = linkToText(paramDesc) || "";
+  const amount = params.amount;
 
-    const amount = params.amount;
+  console.log("AmounttoSend", amount);
+  console.log("Typeof AmounttoSend", typeof amount);
 
-    console.log("AmounttoSend", amount);
-    console.log("Typeof AmounttoSend", typeof amount)
+  const showModalHandler = () => {
+    setAction("send-me");
+  };
 
+  const exitModalHandler = () => {
+    setAction("");
+  };
 
-    const showModalHandler = () => {
-        setAction("send-me");
-      } 
+  if (!(!Number(amount) || amount.trim() !== "") || Number(amount) <= 0 || !beneficiaryAddress ) {
+    return (
+      <div>
+        <Header />
+        <div className={classes["send-me-hu-main"]}>
+          <Error404 />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
-    const exitModalHandler = () => {
-        setAction("");
-      } 
-    
+  // if ((Number(amount) <= formatAmountToBalance(balance))) {
 
-    // if (!!Number(amount) || (amount <= 0) || (!beneficiaryAddress) ) {
-    //     console.log("noooo")
-    //     return (
-    //         <div>Hi</div>
-    //     )
-    // }
-
-
-    
+  // }
 
   return (
     <section className={classes["send-me-hu"]}>
-    <Header />
-    <div className={classes["send-me-hu-main"]}>
-        <h1 className={classes.title}>Send <span>{beneficiaryName}</span> Hu</h1>
-        <h3 className={classes.desc} >{desc || "No Description"}</h3>
+      <Header />
+      <div className={classes["send-me-hu-main"]}>
+        <h1 className={classes.title}>
+          Send <span>{beneficiaryName}</span> Hu
+        </h1>
+        <h3 className={classes.desc}>{desc || "No Description"}</h3>
         <div className={classes["pub-address"]}>
-        <p className={classes["pub-address-text"]}>
-          {formatAddress(beneficiaryAddress)}
-        </p>
-        <div className={classes["pub-address-copy"]}>
-          <IoMdCopy />
+          <p className={classes["pub-address-text"]}>
+            {formatAddress(beneficiaryAddress)}
+          </p>
+          <div className={classes["pub-address-copy"]}>
+            <IoMdCopy />
+          </div>
         </div>
-      </div>
 
-        {amount && <div className={classes.amount}>
+        {amount && (
+          <div className={classes.amount}>
             {formatAmountToBalance(amount)} HUC
-        </div>}
+          </div>
+        )}
 
         <button className={classes["alright"]} onClick={showModalHandler}>
-            Alright
+          Alright
         </button>
 
-        {!!action && <Modal>
-          <div className={classes["exit-modal"]} onClick={exitModalHandler}>
-            &times;
-          </div>
-          <SendMe withAmount={withAmount} beneficiaryAddress={beneficiaryAddress} beneficiaryName={beneficiaryName} desc={desc} amount={amount} onExitModal={exitModalHandler} />
-        </Modal>}
-    </div>
-        
+        {!!action && (
+          <Modal>
+            <div className={classes["exit-modal"]} onClick={exitModalHandler}>
+              &times;
+            </div>
+            <SendMe
+              withAmount={withAmount}
+              beneficiaryAddress={beneficiaryAddress}
+              beneficiaryName={beneficiaryName}
+              desc={desc}
+              amount={amount}
+              onExitModal={exitModalHandler}
+            />
+          </Modal>
+        )}
+      </div>
 
-    <Footer />
+      <Footer />
     </section>
-  )
-}
+  );
+};
 
 export default SendMeHu;

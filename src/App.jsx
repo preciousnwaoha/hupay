@@ -21,23 +21,16 @@ const Transactions = React.lazy(() => import('./pages/Transactions'));
 const Home = React.lazy(() => import('./pages/Home'));
 const ErrorPage404 = React.lazy(() => import('./pages/ErrorPage404'));
 
+/**
+ * Note: Hi There, To Understand the blockchain part code there are 4 paths you should look into first:
+ * "src/bunzz.js", "src/context/contract-context.js", "src/context/trx-context.js", and
+ * "src/components/Action"
+ * 
+ * Might also want to look at "src/utils", "src/pages" and "backend"
+ * 
+ * App - Handles Routing with react-router-dom to all pages
+ */
 const App = () => {
-
-  // const submit = async () => {
-  //   await contract.mint(userAddress, value)
-  //     .then(data => {
-  //       console.log(data);
-  //       alert("Transaction was sent in success🎉");
-  //     })
-  //     .catch(err => console.log(err));
-
-  // const ts = await contract.totalSupply()
-  // const sym = await contract.symbol()
-  // const dec = await contract.decimals()
-  // const bo = await contract.balanceOf(userAddress);
-
-  // console.log(userAddress, ts, sym, dec, bo);
-  // };
 
   return (
     <Suspense fallback={<div className={"centered"}>

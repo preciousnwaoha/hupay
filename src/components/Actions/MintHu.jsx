@@ -8,6 +8,11 @@ import Card from "../UI/Card";
 import Loading from "../UI/Loading";
 import TransactionContext from "../../context/trx-context";
 
+/**
+ * MintHu - This is the code for minting HUC using bunzz sdk
+ * here we are calling contract.mint(_,_)
+ */
+
 const MintHu = ({onExitModal}) => {
   const contractCtx = useContext(ContractContext);
   const trxCtx = useContext(TransactionContext);
@@ -18,12 +23,11 @@ const MintHu = ({onExitModal}) => {
   const userAddress = contractCtx.userAddress;
   const balance = contractCtx.balance;
 
-
   const exitModalHandler = () => {
     onExitModal("")
   }
 
-
+  // Collect form inputs and trace errors
   const {
     value: enteredAmount,
     isValid: amountIsValid,
@@ -54,8 +58,9 @@ const MintHu = ({onExitModal}) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    console.log("submitting");
+    // console.log("submitting");
 
+    // check for errors in input and don't allow mint action if any
     if (
       !amountIsValid ||
       !senderNameIsValid ||
@@ -73,20 +78,24 @@ const MintHu = ({onExitModal}) => {
 
     setWaitingForMetamaskConfirmation(true);
 
-    console.log("mint started: confim Metamask");
+    // console.log("mint started: confim Metamask");
+    // call mint method provided by bunzz sdk
     const trx = await contract
       .mint(userAddress, enteredAmount)
       .then(async (tx) => {
-        console.log("data: ", tx);
+        // console.log("data: ", tx);
 
+        // Transaction is now Pending and no more waiting for confirmation
         setSending(true)
         setWaitingForMetamaskConfirmation(false)
-        console.log("Mint Pending");
+        // console.log("Mint Pending");
         await tx
           .wait()
           .then(async receipt => {
-            console.log("Mint Transaction Success");
+            // Mint Successful
+            // console.log("Mint Transaction Success");
 
+            // Create Schema with Data for Hupay Database
         const receiptToRecord = {
           blockNumber: receipt.blockNumber,
           blockHash: receipt.blockHash,
@@ -101,7 +110,8 @@ const MintHu = ({onExitModal}) => {
           timeStamp: `${(+ Date.now()) / 1000}`,
         };
 
-        console.log("Sending To DB");
+        // Send Data to DB
+        // console.log("Sending To DB");
         await fetch("https://hupay-backend.herokuapp.com/api/trx/add-trx", {
           method: "post",
           headers: { "Content-Type": "application/json" },
@@ -109,12 +119,13 @@ const MintHu = ({onExitModal}) => {
         })
           .then((res) => {
             if (res.ok) {
-              console.log("receipt added to DB");
+              // console.log("receipt added to DB");
               return res.json();
             }
           })
           .then((jsonResponse) => {
-            console.log(jsonResponse);
+            // console.log(jsonResponse);
+            // Update Transactions
             trxCtx.addTransaction(receiptToRecord);
           })
           .catch((err) => {
@@ -131,7 +142,7 @@ const MintHu = ({onExitModal}) => {
         console.log(err);
       });
 
-
+      // update Balance
       await contractCtx.getBalance()
       .then(res => {
         console.log("getting balance: ", res)
@@ -142,14 +153,14 @@ const MintHu = ({onExitModal}) => {
 
     setSending(false);
     
-
+      // Clear Form
     amountResetHandler();
     senderNameResetHandler();
     descResetHandler();
+    // Exit Modal
     exitModalHandler();
   };
 
- 
   const getBalance = () => {
     contractCtx.getBalance()
   };
