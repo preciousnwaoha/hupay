@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { BsArrowDownLeft, BsArrowUpRight } from "react-icons/bs";
-import ContractContext from "../../context/contract-context";
 import { formatAddress, formatAmountToBalance } from "../../utils/walletUtils";
 import Modal from "../UI/Modal";
 import classes from "./TrxHistoryItem.module.css";

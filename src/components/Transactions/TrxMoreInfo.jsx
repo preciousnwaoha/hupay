@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { timeConverter } from "../../utils/trxUtils";
+import ContractContext from "../../context/contract-context";
 import { formatAddress, formatAmountToBalance } from "../../utils/walletUtils";
 import classes from "./TrxMoreInfo.module.css";
 
@@ -16,6 +17,22 @@ const TrxMoreInfo = ({
   timeStamp,
   senderName,
 }) => {
+
+  const contractCtx = useContext(ContractContext);
+
+  let checkedToName = "Anonymous";
+  let checkedFromName = "Anonymous";
+  if (to === contractCtx.userAddress) {
+    checkedToName = "You";
+  }
+
+  if (from === contractCtx.userAddress) {
+    checkedFromName = `You as ${senderName || "Anonymous"}`;
+  }
+
+
+
+
   return (
     <div className={`${classes["trx-more"]}`}>
         <div className={classes["trx-more-main"]}>
@@ -32,13 +49,13 @@ const TrxMoreInfo = ({
       <div className={classes["to-from"]}>
         <div className={classes["to"]}>
           <h4>To</h4>
-          <p className={classes.name}>{senderName || "Anonymous"}</p>
+          <p className={classes.name}>{checkedToName}</p>
           <p className={classes.addr}>{formatAddress(to)}</p>
         </div>
 
         <div className={classes["from"]}>
           <h4>From</h4>
-          <p className={classes.name}>{"Anonymous"}</p>
+          <p className={classes.name}>{checkedFromName}</p>
           <p className={classes.addr}>{formatAddress(from)}</p>
         </div>
       </div>

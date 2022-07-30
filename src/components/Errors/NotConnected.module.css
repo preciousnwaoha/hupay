@@ -39,6 +39,8 @@
 
 .steps p span {
     font-weight: 700;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 
 .note {
@@ -50,3 +52,4 @@
     color: #1e2124;
     background-color: var(--secondary-700);
 }
+
