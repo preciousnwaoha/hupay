@@ -21,7 +21,7 @@ const NotConnected = () => {
             
         </div>
 
-        <p className={classes.note}><b>Note: </b>Hupay Wallet is not yet available for Mobile users, but you can <span>Receive HUC on mobile by adding the Toke to your metamask App</span></p>
+        <p className={classes.note}><b>Note: </b>Hupay Wallet is not yet available for Mobile users, but you can <span> (ONLY) Receive  HUC on mobile by adding the Toke to your metamask App</span></p>
     </div>
   )
 }
