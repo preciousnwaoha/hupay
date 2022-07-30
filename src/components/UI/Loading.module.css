@@ -20,16 +20,16 @@
 
 .anime div:nth-of-type(1) {
     margin-left: 0;
-    animation: upDown 1.85s ease-in-out infinite;
+    animation: upDown 1.65s ease-in-out infinite;
 }
 
 .anime div:nth-of-type(2) {
-    animation: upDown 1.85s ease-in-out infinite;
+    animation: upDown 1.65s ease-in-out infinite;
     animation-delay: .3s;
 }
 
 .anime div:nth-of-type(3) {
-    animation: upDown 1.85s ease-in-out infinite;
+    animation: upDown 1.65s ease-in-out infinite;
     animation-delay: .6s;
 }
 

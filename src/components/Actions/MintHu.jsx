@@ -55,10 +55,13 @@ const MintHu = ({onExitModal}) => {
     reset: descResetHandler,
   } = useInput((value) => true);
 
+  // console.log("amount", enteredAmount);
+  // console.log("typeof amount", typeof enteredAmount);
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    // console.log("submitting");
+    console.log("submitting");
 
     // check for errors in input and don't allow mint action if any
     if (
@@ -80,8 +83,8 @@ const MintHu = ({onExitModal}) => {
 
     // console.log("mint started: confim Metamask");
     // call mint method provided by bunzz sdk
-    const trx = await contract
-      .mint(userAddress, enteredAmount)
+    await contract
+      .mint(userAddress, formatBalanceToAmount(enteredAmount))
       .then(async (tx) => {
         // console.log("data: ", tx);
 
@@ -94,6 +97,8 @@ const MintHu = ({onExitModal}) => {
           .then(async receipt => {
             // Mint Successful
             // console.log("Mint Transaction Success");
+
+
 
             // Create Schema with Data for Hupay Database
         const receiptToRecord = {
@@ -119,12 +124,12 @@ const MintHu = ({onExitModal}) => {
         })
           .then((res) => {
             if (res.ok) {
-              // console.log("receipt added to DB");
+              console.log("receipt added to DB");
               return res.json();
             }
           })
           .then((jsonResponse) => {
-            // console.log(jsonResponse);
+            // console.log("jsonResponse", jsonResponse);
             // Update Transactions
             trxCtx.addTransaction(receiptToRecord);
           })
@@ -140,6 +145,7 @@ const MintHu = ({onExitModal}) => {
       })
       .catch((err) => {
         console.log(err);
+        setWaitingForMetamaskConfirmation(false)
       });
 
       // update Balance

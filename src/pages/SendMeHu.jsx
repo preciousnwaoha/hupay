@@ -23,14 +23,14 @@ const SendMeHu = ({ withAmount = false }) => {
 
   const beneficiaryAddress = params.shareId;
 
-  const beneficiaryName = params.name || "Anonymous";
+  const beneficiaryName = params.name ? linkToText(params.name) : "Anonymous";
 
   const desc = paramDesc ? linkToText(paramDesc) : "";
 
   const amount = params.amount;
 
-  console.log("AmounttoSend", amount);
-  console.log("Typeof AmounttoSend", typeof amount);
+  // console.log("AmounttoSend", amount);
+  // console.log("Typeof AmounttoSend", typeof amount);
 
   const showModalHandler = () => {
     setAction("send-me");

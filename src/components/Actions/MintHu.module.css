@@ -108,6 +108,14 @@
     font-weight: 700;
 }
 
+.waiting-confirmation {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
 .metamask-logo {
     margin: 1rem;
     margin-top: 0;

@@ -123,3 +123,22 @@
     font-size: 0.65rem;
     color: red;
 }
+
+.waiting-confirmation {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.metamask-logo {
+    margin: 1rem;
+    margin-top: 0;
+}
+
+.metamask-logo img {
+    object-fit: contain;
+    width: 80px;
+    height: 80px;
+}

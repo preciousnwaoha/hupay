@@ -29,20 +29,20 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 0;
-    right: auto;
     background: var(--dark-700);
     height: 20px;
     width: 20px;
 }
 
 .light div {
-    
+    left: 0;
+        right: auto;
     animation: turnOn .3s ease-in forwards;
 }
 
 .dark div{
-    /* background: var(--dark-400); */
+    left: auto;
+        right: 0;
     animation: turnOf .3s ease-in forwards;
 }
 

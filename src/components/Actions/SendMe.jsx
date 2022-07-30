@@ -4,7 +4,7 @@ import useInput from "../../hooks/use-input";
 import ContractContext from "../../context/contract-context";
 import classes from "./SendMe.module.css";
 import Card from "../UI/Card";
-import { formatAmountToBalance, formatBalanceToAmount } from "../../utils/walletUtils";
+import { formatAmountToBalance, formatBalanceToAmount, linkToText } from "../../utils/walletUtils";
 import Loading from "../UI/Loading";
 import TransactionContext from "../../context/trx-context";
 
@@ -21,6 +21,9 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
   const exitModalHandler = () => {
     onExitModal("")
   }
+
+ 
+  
 
   const {
     value: enteredAmount,
@@ -57,9 +60,17 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
     // console.log("submitting");
 
     // check for errors in input and don't allow mint action if any
+    let amountChecker = false;
+    if (amount) {
+      amountChecker = true;
+    } else {
+      amountChecker = amountIsValid;
+    }
+
+    // console.log("amountChecker", amountChecker)
 
     if (
-      !amountIsValid ||
+      !amountChecker ||
       !senderNameIsValid ||
       !descIsValid
     ) {
@@ -77,9 +88,12 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
 
     // console.log("Send started: confim Metamask");
     // call mint method provided by bunzz sdk
-    console.log("transfer started: confim Metamask");
+    // console.log("transfer started: confim Metamask");
+
+    const amountToSend = amount ? amount : formatBalanceToAmount(enteredAmount);
+
     await contract
-      .transfer(beneficiaryAddress, enteredAmount)
+      .transfer(beneficiaryAddress, amountToSend)
       .then(async (tx) => {
         // console.log("data: ", tx);
 
@@ -102,8 +116,8 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
           from: receipt.rawReceipt.from,
           mid: receipt.rawReceipt.to,
           to: beneficiaryAddress,
-          message: enteredDesc || `Sent cash to ${beneficiaryName}`,
-          amount: formatBalanceToAmount(amount),
+          message: enteredDesc || `Sent tokens to ${linkToText(beneficiaryName)}`,
+          amount: amount ? amount : formatBalanceToAmount(enteredAmount),
           senderName: enteredSenderName || "Anonymous",
           timeStamp: `${(+ Date.now()) / 1000}`,
         };
@@ -158,9 +172,9 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
     exitModalHandler();
   };
 
-  console.log("userAddess", userAddress);
-  console.log("balance", balance);
-  console.log("contract", contract);
+  // console.log("userAddess", userAddress);
+  // console.log("balance", balance);
+  // console.log("contract", contract);
   
   const getBalance = () => {
     contractCtx.getBalance()
@@ -171,7 +185,7 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
       <h1 className={classes["title"]}>Send Hu</h1>
 
       <div className={classes.balance}>
-        <p>Balance: {formatBalanceToAmount(balance)} HUC</p>
+        <p>Balance: {formatAmountToBalance(balance)} HUC</p>
         <span className={classes["balance-reload"]} onClick={getBalance}>
           <AiOutlineReload />
         </span>
@@ -212,7 +226,7 @@ const SendMe = ({beneficiaryAddress, beneficiaryName, amount, desc, onExitModal}
         <label htmlFor="trxdescription">Description</label>
         <textarea
           id="trxdescription"
-          placeholder={amount ? `Sent cash to ${beneficiaryName}`: "Thanks for the food, Fred!"}
+          placeholder={amount ? `Sent tokens to ${linkToText(beneficiaryName)}`: "Thanks for the food, Fred!"}
           value={enteredDesc || ""}
           onChange={descChangeHandler}
           onBlur={descBlurHandler}

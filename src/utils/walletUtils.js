@@ -5,18 +5,36 @@ export const formatAddress = (address) =>  {
 
 }
 
+// export const formatAmountToBalance = (amount) => {
+//     const workingAmount = `${amount}`
+
+//     const afterDecimal = workingAmount.slice(-18);
+
+//     let beforeDecimal = "";
+//     for (let i = 0; i < (workingAmount.length - 1); i++) {
+//         let checkee = workingAmount.slice(i);
+//         if (checkee === afterDecimal) {
+//             beforeDecimal = checkee.slice(0, i);
+//         }
+//     }
+
+//     const formattedAmount = `${beforeDecimal ? beforeDecimal : "0"}.${afterDecimal}`
+
+//     return Number(formattedAmount);
+// }
+
 export const formatAmountToBalance = (amount) => {
     const workingAmount = `${amount}`
 
     const afterDecimal = workingAmount.slice(-18);
 
-    let beforeDecimal = "";
-    for (let i = 0; i < (workingAmount.length - 1); i++) {
-        let checkee = workingAmount.slice(i);
-        if (checkee === afterDecimal) {
-            beforeDecimal = checkee.slice(0, i);
-        }
+
+    let beforeDecimal = "0";
+    
+    if (amount.length > 18) {
+        beforeDecimal = amount.replace(afterDecimal, "");
     }
+    
 
     const formattedAmount = `${beforeDecimal ? beforeDecimal : "0"}.${afterDecimal}`
 

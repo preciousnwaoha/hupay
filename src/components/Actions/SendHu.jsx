@@ -26,7 +26,6 @@ const SendHu = ({onExitModal}) => {
   const [waitingForMetamaskConfirmation, setWaitingForMetamaskConfirmation] = useState(false);
 
   const contract = contractCtx.contract;
-  const userAddress = contractCtx.userAddress;
   const balance = contractCtx.balance;
 
   const exitModalHandler = () => {
@@ -105,7 +104,7 @@ const SendHu = ({onExitModal}) => {
         // Transaction is now Pending and no more waiting for confirmation
         setSending(true)
         setWaitingForMetamaskConfirmation(false)
-        console.log("Transfer Pending");
+        // console.log("Transfer Pending");
         await tx
           .wait()
           .then(async (receipt) => {
@@ -183,17 +182,17 @@ const SendHu = ({onExitModal}) => {
     exitModalHandler();
   };
   
-  const getBalance = () => {
-    contractCtx.getBalance()
+  const getBalanceSor = async () => {
+    await contractCtx.getBalance()
   };
 
   return (
     <Card className={classes["send-hu"]}>
       <h1 className={classes["title"]}>Send Hu</h1>
 
-      <div className={classes.balance}>
+      <div className={classes.balance} >
         <p>Balance: {formatAmountToBalance(balance)} HUC </p>
-        <span className={classes["balance-reload"]} onClick={getBalance}>
+        <span className={classes["balance-reload"]} onClick={getBalanceSor}>
           <AiOutlineReload />
         </span>
       </div>

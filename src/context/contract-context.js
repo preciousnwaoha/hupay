@@ -48,19 +48,28 @@ export const ContractContextProvider = ({ children }) => {
     }
   }, [contract])
 
+  // console.log("balance", balance)
+  // console.log("typeof balance", typeof balance)
 
   // get Contract Balance
   const getBalance = async () => {
+    // console.log("getting balance")
     if (!!userAddress && !!contract && !balance) {
-      const bo = await contract
+      let bo = await contract
         .balanceOf(userAddress)
-        .then((res) => {
-          return res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-          return balance;
-        });
+        // .then((res) => {
+        //   console.log("balance res", res)
+        //   return res.data;
+        // })
+        // .catch((err) => {
+        //   console.log(err);
+        //   return balance;
+        // });
+
+        // console.log("bo", bo)
+        if (!bo) {
+          bo = balance
+        }
 
       setBalance(bo);
     }
@@ -81,6 +90,8 @@ export const ContractContextProvider = ({ children }) => {
           console.log(err);
           return balance;
         });
+
+
 
       setBalance(bo);
     };
