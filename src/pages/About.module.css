@@ -79,6 +79,8 @@
 .how-to-use p {
     font-weight: 300;
     line-height: 25px;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .how-to-use p span {

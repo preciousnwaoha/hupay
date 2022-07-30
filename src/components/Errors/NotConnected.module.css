@@ -53,3 +53,7 @@
     background-color: var(--secondary-700);
 }
 
+.note span {
+    font-weight: 700;
+}
+
